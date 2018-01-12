@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Logo from "../components/Logo";
 import LeftSideBarMenu from "../components/LeftSideBarMenu";
+import ProductDisplay from "../components/ProductDisplay";
 import { connect } from "react-redux";
 import { updateOpenedMenu } from "../actions/AppAction";
 
 class App extends React.Component {
   render() {
-    const { openedMenu, shirtColor, dispatch } = this.props;
+    const { openedMenu, shirtColor, shirtType, dispatch } = this.props;
 
     return (
       <div className="container mt-4">
@@ -21,24 +22,7 @@ class App extends React.Component {
             />
           </div>
           <div className="col-7 bg-white">
-            <div className="row">
-              <div className="col-2 mt-3" />
-              <div
-                className="col-7 px-0"
-                style={{ backgroundColor: shirtColor }}
-              >
-                <img
-                  src="/img/basic_tshirt_front.png"
-                  alt=""
-                  className="img-fluid"
-                />
-              </div>
-              <div className="col-2">
-                <button className="btn btn-light mt-3">
-                  <i className="fa fa-floppy-o" /> Save Image
-                </button>
-              </div>
-            </div>
+            <ProductDisplay shirtColor={shirtColor} shirtType={shirtType} />
           </div>
         </div>
       </div>
@@ -48,7 +32,8 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({
   openedMenu: state.app.openedMenu,
-  shirtColor: state.productChanger.shirtColor
+  shirtColor: state.productChanger.shirtColor,
+  shirtType: state.productChanger.shirtType
 });
 
 export default connect(mapStateToProps)(App);

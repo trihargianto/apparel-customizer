@@ -1,7 +1,11 @@
-import { UPDATE_SHIRT_COLOR } from "../constants/actionTypes";
+import {
+  UPDATE_SHIRT_COLOR,
+  UPDATE_SHIRT_TYPE
+} from "../constants/actionTypes";
 
 const initialState = {
-  shirtColor: "#ffffff"
+  shirtColor: "#9c27b0",
+  shirtType: "basic_tshirt"
 };
 
 export default (state = initialState, action) => {
@@ -10,6 +14,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         shirtColor: action.color
+      };
+    case UPDATE_SHIRT_TYPE:
+      return {
+        ...state,
+        shirtType: action.shirtType
       };
 
     default:
