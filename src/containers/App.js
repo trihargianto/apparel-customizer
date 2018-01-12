@@ -12,9 +12,15 @@ class App extends React.Component {
 
     return (
       <div className="container mt-4">
-        <Logo />
-
         <div className="row">
+          <div className="col-6">
+            <Logo />
+          </div>
+          <div className="col-6 pr-0">
+            <button className="btn btn-success float-sm-right btn-md mt-3">
+              <i className="fa fa-floppy-o mr-1" /> Save Image
+            </button>
+          </div>
           <div className="col-5">
             <LeftSideBarMenu
               openedMenu={openedMenu}
