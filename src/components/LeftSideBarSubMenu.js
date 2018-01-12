@@ -1,28 +1,31 @@
 import React from "react";
 import FormAddImage from "./FormAddImage";
 import FormAddText from "./FormAddText";
-import FormChangeProduct from "./FormChangeProduct";
+import FormChangeProduct from "../containers/FormChangeProduct";
 
 const translateOpenedMenu = openedMenu => {
   switch (openedMenu) {
     case "change":
-      return "Change Product Options";
+      return "CHANGE PRODUCT OPTIONS";
     case "text":
-      return "Text Options";
+      return "TEXT OPTIONS";
     case "image":
-      return "Image Options";
+      return "IMAGE OPTIONS";
     default:
-      return "Unknown Action";
+      return "UNKNOWN ACTION";
   }
 };
 
 const LeftSideBarSubMenu = ({ openedMenu }) => {
   return (
     <div className="card border-0">
-      <div class="card-body">
-        <h6 className="text-muted mb-3">
-          <b>{translateOpenedMenu(openedMenu)}</b>
+      <div className="card-body">
+        <h6 className="text-muted mb-4">
+          <small>
+            <b>{translateOpenedMenu(openedMenu)}</b>
+          </small>
         </h6>
+        <hr className="mt-0 border-light" />
 
         {openedMenu === "change" ? (
           <FormChangeProduct />
