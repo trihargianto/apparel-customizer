@@ -1,19 +1,38 @@
-import React, { Component } from "react";
+import React from "react";
 import ButtonComponentItem from "./ButtonComponentItem";
+import LeftSideBarSubMenu from "../components/LeftSideBarSubMenu";
 
-class LeftSideBarMenu extends Component {
-  render() {
-    return (
-      <div className="row">
-        <div className="col-3">
-          <ButtonComponentItem icon="files-o" label="CHANGE" />
-          <ButtonComponentItem icon="text-height" label="TEXT" isActive />
-          <ButtonComponentItem icon="picture-o" label="IMAGE" />
-        </div>
-        <div className="col-9" />
+const LeftSideBarMenu = ({ openedMenu, onClickMenu }) => {
+  return (
+    <div className="row">
+      <div className="col-3">
+        <ButtonComponentItem
+          icon="files-o"
+          label="CHANGE"
+          isActive={openedMenu === "change"}
+          type="change"
+          onClick={onClickMenu}
+        />
+        <ButtonComponentItem
+          icon="text-height"
+          label="TEXT"
+          isActive={openedMenu === "text"}
+          type="text"
+          onClick={onClickMenu}
+        />
+        <ButtonComponentItem
+          icon="picture-o"
+          label="IMAGE"
+          isActive={openedMenu === "image"}
+          type="image"
+          onClick={onClickMenu}
+        />
       </div>
-    );
-  }
-}
+      <div className="col-9">
+        <LeftSideBarSubMenu openedMenu={openedMenu} />
+      </div>
+    </div>
+  );
+};
 
 export default LeftSideBarMenu;
