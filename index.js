@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./src/App";
+import App from "./src/containers/App";
 import { Provider } from "react-redux";
 import store from "./src/store/configureStore";
 import "bootstrap/dist/css/bootstrap.min.css";

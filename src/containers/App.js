@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Logo from "./components/Logo";
-import LeftSideBarMenu from "./components/LeftSideBarMenu";
+import Logo from "../components/Logo";
+import LeftSideBarMenu from "../components/LeftSideBarMenu";
 
 class App extends React.PureComponent {
   render() {
