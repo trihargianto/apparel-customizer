@@ -5,7 +5,7 @@ import LeftSideBarSubMenu from "../components/LeftSideBarSubMenu";
 const LeftSideBarMenu = ({ openedMenu, onClickMenu }) => {
   return (
     <div className="row">
-      <div className="col-3">
+      <div className="col-3" style={{ paddingRight: "0" }}>
         <ButtonComponentItem
           icon="files-o"
           label="CHANGE"
@@ -28,7 +28,7 @@ const LeftSideBarMenu = ({ openedMenu, onClickMenu }) => {
           onClick={onClickMenu}
         />
       </div>
-      <div className="col-9">
+      <div className="col-9" style={{ paddingLeft: "0" }}>
         <LeftSideBarSubMenu openedMenu={openedMenu} />
       </div>
     </div>

@@ -8,3 +8,7 @@ body {
      -moz-border-radius: 0 !important;
           border-radius: 0 !important;
 }
+
+button.very-light {
+  background: #FFF;
+}
