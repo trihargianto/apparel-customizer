@@ -1,0 +1,10 @@
+body {
+  font-family: "Raleway";
+  background-color: #EEE;
+}
+
+* {
+  -webkit-border-radius: 0 !important;
+     -moz-border-radius: 0 !important;
+          border-radius: 0 !important;
+}
