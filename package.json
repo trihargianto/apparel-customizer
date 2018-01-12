@@ -1,0 +1,35 @@
+{
+  "name": "apparel-customizer",
+  "version": "1.0.0",
+  "description": "Apparel Customizer built with React + FabricJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --content-base './dist' --hot true --port 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trihargianto/apparel-customizer.git"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "keywords": [
+    "apparel",
+    "customizer"
+  ],
+  "author": "Tri Hargianto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trihargianto/apparel-customizer/issues"
+  },
+  "homepage": "https://github.com/trihargianto/apparel-customizer#readme"
+}
