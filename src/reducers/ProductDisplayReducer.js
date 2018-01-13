@@ -1,4 +1,4 @@
-import { UPDATE_CANVAS } from "../constants/actionTypes";
+import { UPDATE_CANVAS, UPDATE_OBJECTS_CANVAS } from "../constants/actionTypes";
 
 const initialState = {
   objects: [],
@@ -47,6 +47,12 @@ export default (state = initialState, action) => {
     case UPDATE_CANVAS:
       return {
         ...action.payload
+      };
+
+    case UPDATE_OBJECTS_CANVAS:
+      return {
+        ...state,
+        objects: [...action.payload]
       };
 
     default:

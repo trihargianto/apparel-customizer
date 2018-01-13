@@ -20,13 +20,13 @@ const LeftSideBarMenu = ({ openedMenu, onClickMenu }) => {
           type="text"
           onClick={onClickMenu}
         />
-        <ButtonComponentItem
+        {/* <ButtonComponentItem
           icon="picture-o"
           label="IMAGE"
           isActive={openedMenu === "image"}
           type="image"
           onClick={onClickMenu}
-        />
+        /> */}
       </div>
       <div className="col-9" style={{ paddingLeft: "0" }}>
         <LeftSideBarSubMenu openedMenu={openedMenu} />

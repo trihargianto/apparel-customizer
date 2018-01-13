@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateCanvas } from "../actions/ProductDisplayAction";
+import {
+  updateStateTextOption,
+  updateValueText
+} from "../actions/FormAddTextAction";
+import { updateOpenedMenu } from "../actions/AppAction";
 
 class ProductDisplay extends Component {
   componentDidMount() {
@@ -19,19 +24,34 @@ class ProductDisplay extends Component {
 
       this.props.dispatch(
         updateCanvas({
-          canvasObject: {
-            objects: newObjects,
-            background: this.props.canvasObject.background,
-            overlayImage: this.props.canvasObject.overlayImage
-          }
+          objects: newObjects,
+          background: this.props.canvasObject.background,
+          overlayImage: this.props.canvasObject.overlayImage
         })
       );
+    });
+
+    window.pcanvas.on("object:selected", event => {
+      const index = pcanvas.getObjects().indexOf(event.target);
+
+      if (event.target.type === "text") {
+        const { text, fill, fontWeight } = event.target;
+
+        this.props.dispatch(updateStateTextOption("edit"));
+        this.props.dispatch(updateValueText(text, fill, fontWeight));
+        this.props.dispatch(updateOpenedMenu("text"));
+      }
+    });
+
+    window.pcanvas.on("selection:cleared", event => {
+      console.log("unselected!", event.deselected[0]);
+
+      this.props.dispatch(updateStateTextOption("add"));
     });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const newObjects = [...this.props.canvasObject.objects];
-
+    const newObjects = this.props.canvasObject.objects;
     window.pcanvas.loadFromJSON(
       {
         objects: newObjects,
