@@ -1,7 +1,11 @@
 import { APP_UPDATE_OPENED_MENU } from "../constants/actionTypes";
 
+/*
+ * initialState.openedMenu default value : change, text, image
+ */
+
 const initialState = {
-  openedMenu: "change"
+  openedMenu: "text"
 };
 
 const AppReducer = (state = initialState, action) => {

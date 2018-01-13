@@ -12,7 +12,7 @@ class App extends React.Component {
 
     var a = window.document.createElement("a");
     a.href = gh;
-    a.download = "image.png";
+    a.download = "apparel-design.png";
     a.crossOrigin = "anonymous";
 
     a.click();
@@ -22,7 +22,7 @@ class App extends React.Component {
     const { openedMenu, shirtColor, shirtType, dispatch } = this.props;
 
     return (
-      <div className="container mt-2 mb-2">
+      <div className="container mt-5 mb-2">
         <div id="preloadImage1" />
         <div id="preloadImage2" />
         <div id="preloadImage3" />
@@ -51,8 +51,8 @@ class App extends React.Component {
           </div>
         </div>
 
+        <hr style={{ width: "50%" }} className="mt-4" />
         <p align="center">
-          <hr style={{ width: "50%" }} className="mt-4" />
           Handcrafted by{" "}
           <a href="http://github.com/trihargianto">@trihargianto</a>
         </p>

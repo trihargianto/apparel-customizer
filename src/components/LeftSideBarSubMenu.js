@@ -1,6 +1,6 @@
 import React from "react";
 import FormAddImage from "./FormAddImage";
-import FormAddText from "./FormAddText";
+import FormAddText from "../containers/FormAddText";
 import FormChangeProduct from "../containers/FormChangeProduct";
 
 const translateOpenedMenu = openedMenu => {
