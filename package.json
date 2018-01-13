@@ -4,7 +4,8 @@
   "description": "Apparel Customizer built with React + FabricJS",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --content-base './dist' --hot true --port 3000"
+    "start": "webpack-dev-server --content-base './dist' --hot true --port 3000",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",

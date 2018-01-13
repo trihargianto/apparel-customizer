@@ -12,3 +12,20 @@ body {
 button.very-light {
   background: #FFF;
 }
+
+#preloadImage1 { 
+  background: url(/img/basic_tshirt_front.png) no-repeat -9999px -9999px;
+}
+#preloadImage2 { 
+  background: url(/img/female_tshirt_front.png) no-repeat -9999px -9999px;
+}
+#preloadImage3 { 
+  background: url(/img/hoodie_front.png) no-repeat -9999px -9999px;
+}
+#preloadImage4 { 
+  background: url(/img/long_sleeve_front.png) no-repeat -9999px -9999px;
+}
+
+.canvas-container {
+  margin: 0 auto;
+}
