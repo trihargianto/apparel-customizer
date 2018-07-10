@@ -1,3 +1,5 @@
+### :construction: :construction: WORK IN PROGRESS :construction: :construction:
+
 # Apparel Customizer :shirt: 
 
 The Apparel Customizer app built with React + FabricJS :sunglasses: .
