@@ -1,5 +1,5 @@
-import React from "react";
-import { HuePicker } from "react-color";
+import React from 'react';
+import { HuePicker } from 'react-color';
 
 const FormEditText = ({ text, fill, fontWeight, handleChange }) => {
   return (
@@ -11,7 +11,7 @@ const FormEditText = ({ text, fill, fontWeight, handleChange }) => {
         <input
           name="newText"
           type="text"
-          onChange={e => handleChange("valueText", e.target.value)}
+          onChange={(e) => handleChange('valueText', e.target.value)}
           value={text}
           className="form-control"
           placeholder="Enter your awesome text here .."
@@ -29,7 +29,7 @@ const FormEditText = ({ text, fill, fontWeight, handleChange }) => {
           <button
             type="button"
             className={`btn btn-${
-              fontWeight === "bold" ? "secondary" : "default"
+              fontWeight === 'bold' ? 'secondary' : 'default'
             } mr-1`}
           >
             <i className="fa fa-bold" />

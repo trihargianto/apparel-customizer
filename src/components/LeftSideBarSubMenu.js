@@ -1,18 +1,18 @@
-import React from "react";
-import FormAddImage from "./FormAddImage";
-import FormAddText from "../containers/FormAddText";
-import FormChangeProduct from "../containers/FormChangeProduct";
+import React from 'react';
+import FormAddImage from './FormAddImage';
+import FormAddText from '../containers/FormAddText';
+import FormChangeProduct from '../containers/FormChangeProduct';
 
-const translateOpenedMenu = openedMenu => {
+const translateOpenedMenu = (openedMenu) => {
   switch (openedMenu) {
-    case "change":
-      return "CHANGE PRODUCT OPTIONS";
-    case "text":
-      return "TEXT OPTIONS";
-    case "image":
-      return "IMAGE OPTIONS";
+    case 'change':
+      return 'CHANGE PRODUCT OPTIONS';
+    case 'text':
+      return 'TEXT OPTIONS';
+    case 'image':
+      return 'IMAGE OPTIONS';
     default:
-      return "UNKNOWN ACTION";
+      return 'UNKNOWN ACTION';
   }
 };
 
@@ -27,11 +27,11 @@ const LeftSideBarSubMenu = ({ openedMenu }) => {
         </h6>
         <hr className="mt-0 border-light" />
 
-        {openedMenu === "change" ? (
+        {openedMenu === 'change' ? (
           <FormChangeProduct />
-        ) : openedMenu === "text" ? (
+        ) : openedMenu === 'text' ? (
           <FormAddText />
-        ) : openedMenu === "image" ? (
+        ) : openedMenu === 'image' ? (
           <FormAddImage />
         ) : (
           <div>Unknown Action!</div>

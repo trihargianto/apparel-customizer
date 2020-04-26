@@ -1,11 +1,11 @@
-import { APP_UPDATE_OPENED_MENU } from "../constants/actionTypes";
+import { APP_UPDATE_OPENED_MENU } from '../constants/actionTypes';
 
 /*
  * initialState.openedMenu default value : change, text, image
  */
 
 const initialState = {
-  openedMenu: "text"
+  openedMenu: 'text',
 };
 
 const AppReducer = (state = initialState, action) => {
@@ -13,7 +13,7 @@ const AppReducer = (state = initialState, action) => {
     case APP_UPDATE_OPENED_MENU:
       return {
         ...state,
-        openedMenu: action.item
+        openedMenu: action.item,
       };
 
     default:

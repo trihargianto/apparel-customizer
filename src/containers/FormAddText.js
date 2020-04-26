@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { updateObjectsCanvas } from "../actions/ProductDisplayAction";
-import { updateStateByName } from "../actions/FormAddTextAction";
-import FormNewText from "../components/FormNewText";
-import FormEditText from "../components/FormEditText";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updateObjectsCanvas } from '../actions/ProductDisplayAction';
+import { updateStateByName } from '../actions/FormAddTextAction';
+import FormNewText from '../components/FormNewText';
+import FormEditText from '../components/FormEditText';
 
 class FormAddText extends Component {
   constructor() {
     super();
 
     this.state = {
-      newText: ""
+      newText: '',
     };
 
     this.handleSubmitText = this.handleSubmitText.bind(this);
@@ -20,29 +20,29 @@ class FormAddText extends Component {
   }
 
   handleSubmitText() {
-    if (this.state.newText !== "") {
+    if (this.state.newText !== '') {
       let objectsClone = [...this.props.canvasObject.objects];
 
       const obj = new fabric.Text(this.state.newText, {
-        textAlign: "center",
+        textAlign: 'center',
         left: 100,
         top: 100,
         width: 100,
-        fontWeight: "normal",
-        fill: "#FFFFFF"
+        fontWeight: 'normal',
+        fill: '#FFFFFF',
       });
 
       objectsClone.push(obj);
 
       this.props.dispatch(updateObjectsCanvas(objectsClone));
 
-      this.setState({ newText: "" });
+      this.setState({ newText: '' });
     }
   }
 
   onChangeText(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   }
 
@@ -77,7 +77,7 @@ class FormAddText extends Component {
 
     return (
       <div>
-        {this.props.optionMode === "add" ? (
+        {this.props.optionMode === 'add' ? (
           <FormNewText
             handleSubmitText={this.handleSubmitText}
             onChangeText={this.onChangeText}
@@ -96,12 +96,12 @@ class FormAddText extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   canvasObject: state.productDisplay,
   optionMode: state.textOption.mode,
   editVal: state.textOption,
   shirtColor: state.productChanger.shirtColor,
-  shirtType: state.productChanger.shirtType
+  shirtType: state.productChanger.shirtType,
 });
 
 export default connect(mapStateToProps)(FormAddText);

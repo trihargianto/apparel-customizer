@@ -1,20 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const FormDropdown = props => {
+const FormDropdown = (props) => {
   return (
     <div>
       <select
         name={props.name}
         className="form-control"
         onChange={props.onChange}
-        value={props.value || ""}
+        value={props.value || ''}
         disabled={props.disabled || false}
       >
         {props.usePlaceholder && (
-          <option value="">{props.placeholder || "- Choose One:"}</option>
+          <option value="">{props.placeholder || '- Choose One:'}</option>
         )}
-        {props.items.map(item => {
+        {props.items.map((item) => {
           return (
             <option key={item.key} value={item.key}>
               {item.value}
@@ -32,11 +32,11 @@ FormDropdown.propTypes = {
   items: PropTypes.array.isRequired,
   disabled: PropTypes.bool,
   value: PropTypes.string,
-  usePlaceholder: PropTypes.bool
+  usePlaceholder: PropTypes.bool,
 };
 
 FormDropdown.defaultProps = {
-  usePlaceholder: true
+  usePlaceholder: true,
 };
 
 export default FormDropdown;

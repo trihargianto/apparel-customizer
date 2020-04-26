@@ -1,19 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Logo from "../components/Logo";
-import LeftSideBarMenu from "../components/LeftSideBarMenu";
-import ProductDisplay from "../containers/ProductDisplay";
-import { connect } from "react-redux";
-import { updateOpenedMenu } from "../actions/AppAction";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Logo from '../components/Logo';
+import LeftSideBarMenu from '../components/LeftSideBarMenu';
+import ProductDisplay from '../containers/ProductDisplay';
+import { connect } from 'react-redux';
+import { updateOpenedMenu } from '../actions/AppAction';
 
 class App extends React.Component {
   saveImg() {
-    var gh = pcanvas.toDataURL("png");
+    var gh = pcanvas.toDataURL('png');
 
-    var a = window.document.createElement("a");
+    var a = window.document.createElement('a');
     a.href = gh;
-    a.download = "apparel-design.png";
-    a.crossOrigin = "anonymous";
+    a.download = 'apparel-design.png';
+    a.crossOrigin = 'anonymous';
 
     a.click();
   }
@@ -43,7 +43,7 @@ class App extends React.Component {
           <div className="col-5">
             <LeftSideBarMenu
               openedMenu={openedMenu}
-              onClickMenu={item => dispatch(updateOpenedMenu(item))}
+              onClickMenu={(item) => dispatch(updateOpenedMenu(item))}
             />
           </div>
           <div className="col-7 bg-white">
@@ -51,9 +51,9 @@ class App extends React.Component {
           </div>
         </div>
 
-        <hr style={{ width: "50%" }} className="mt-4" />
+        <hr style={{ width: '50%' }} className="mt-4" />
         <p align="center">
-          Handcrafted by{" "}
+          Handcrafted by{' '}
           <a href="http://github.com/trihargianto">@trihargianto</a>
         </p>
       </div>
@@ -61,10 +61,10 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   openedMenu: state.app.openedMenu,
   shirtColor: state.productChanger.shirtColor,
-  shirtType: state.productChanger.shirtType
+  shirtType: state.productChanger.shirtType,
 });
 
 export default connect(mapStateToProps)(App);

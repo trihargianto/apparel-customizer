@@ -1,13 +1,15 @@
 ### :construction: :construction: WORK IN PROGRESS :construction: :construction:
 
-# Apparel Customizer :shirt: 
+# Apparel Customizer :shirt:
 
 The Apparel Customizer app built with React + FabricJS :sunglasses: .
 
-Available command by terminal : 
+Available command by terminal :
 
-Development version : 
-> npm start 
+Development version :
 
-Build version : 
+> npm start
+
+Build version :
+
 > npm run build

@@ -1,22 +1,22 @@
-import React from "react";
-import ButtonComponentItem from "./ButtonComponentItem";
-import LeftSideBarSubMenu from "../components/LeftSideBarSubMenu";
+import React from 'react';
+import ButtonComponentItem from './ButtonComponentItem';
+import LeftSideBarSubMenu from '../components/LeftSideBarSubMenu';
 
 const LeftSideBarMenu = ({ openedMenu, onClickMenu }) => {
   return (
     <div className="row">
-      <div className="col-3" style={{ paddingRight: "0" }}>
+      <div className="col-3" style={{ paddingRight: '0' }}>
         <ButtonComponentItem
           icon="files-o"
           label="CHANGE"
-          isActive={openedMenu === "change"}
+          isActive={openedMenu === 'change'}
           type="change"
           onClick={onClickMenu}
         />
         <ButtonComponentItem
           icon="text-height"
           label="TEXT"
-          isActive={openedMenu === "text"}
+          isActive={openedMenu === 'text'}
           type="text"
           onClick={onClickMenu}
         />
@@ -28,7 +28,7 @@ const LeftSideBarMenu = ({ openedMenu, onClickMenu }) => {
           onClick={onClickMenu}
         /> */}
       </div>
-      <div className="col-9" style={{ paddingLeft: "0" }}>
+      <div className="col-9" style={{ paddingLeft: '0' }}>
         <LeftSideBarSubMenu openedMenu={openedMenu} />
       </div>
     </div>

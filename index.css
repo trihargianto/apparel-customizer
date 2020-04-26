@@ -1,28 +1,28 @@
 body {
   font-family: "Raleway";
-  background-color: #EEE;
+  background-color: #eee;
 }
 
 * {
   -webkit-border-radius: 0 !important;
-     -moz-border-radius: 0 !important;
-          border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
 }
 
 button.very-light {
-  background: #FFF;
+  background: #fff;
 }
 
-#preloadImage1 { 
+#preloadImage1 {
   background: url(/img/basic_tshirt_front.png) no-repeat -9999px -9999px;
 }
-#preloadImage2 { 
+#preloadImage2 {
   background: url(/img/female_tshirt_front.png) no-repeat -9999px -9999px;
 }
-#preloadImage3 { 
+#preloadImage3 {
   background: url(/img/hoodie_front.png) no-repeat -9999px -9999px;
 }
-#preloadImage4 { 
+#preloadImage4 {
   background: url(/img/long_sleeve_front.png) no-repeat -9999px -9999px;
 }
 

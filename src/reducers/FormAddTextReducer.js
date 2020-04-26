@@ -1,16 +1,16 @@
 import {
   UPDATE_STATE_TEXT_OPTIONS,
   UPDATE_VALUE_TEXT,
-  UPDATE_TEXT_OPTION_STATE
-} from "../constants/actionTypes";
+  UPDATE_TEXT_OPTION_STATE,
+} from '../constants/actionTypes';
 
 // initialState.mode value : "add", "edit"
 
 const initialState = {
-  mode: "add",
-  valueText: "",
-  valueColor: "",
-  valueFontWeight: ""
+  mode: 'add',
+  valueText: '',
+  valueColor: '',
+  valueFontWeight: '',
 };
 
 export default (state = initialState, action) => {
@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
     case UPDATE_STATE_TEXT_OPTIONS:
       return {
         ...state,
-        mode: action.mode
+        mode: action.mode,
       };
 
     case UPDATE_VALUE_TEXT:
@@ -26,13 +26,13 @@ export default (state = initialState, action) => {
         ...state,
         valueText: action.text,
         valueColor: action.color,
-        valueFontWeight: action.fontWeight
+        valueFontWeight: action.fontWeight,
       };
 
     case UPDATE_TEXT_OPTION_STATE:
       return {
         ...state,
-        [action.stateName]: action.stateValue
+        [action.stateName]: action.stateValue,
       };
 
     default:
