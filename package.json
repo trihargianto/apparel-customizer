@@ -1,46 +1,27 @@
 {
-  "name": "apparel-customizer",
-  "version": "1.0.0",
-  "description": "Apparel Customizer built with React + FabricJS",
-  "main": "index.js",
+  "name": "apparel-customizer-next",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/trihargianto/apparel-customizer.git"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
-    "@babel/preset-env": "^7.9.5",
-    "@babel/preset-react": "^7.9.4",
-    "@webpack-cli/serve": "^0.2.0",
-    "babel-loader": "^7.1.5",
-    "css-loader": "^3.5.3",
-    "style-loader": "^1.2.0",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "bootstrap": "^4.4.1",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-color": "^2.18.0",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
-    "redux": "^4.0.5"
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.0.3"
   },
-  "keywords": [
-    "apparel",
-    "customizer"
-  ],
-  "author": "Tri Hargianto",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/trihargianto/apparel-customizer/issues"
-  },
-  "homepage": "https://github.com/trihargianto/apparel-customizer#readme"
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.3"
+  }
 }
