@@ -1,8 +1,11 @@
-import Image from "next/image";
+"use client";
+
 import {
   ArrowDownTrayIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
+
+import { useApparelAsset } from "@/hooks/useApparelAsset";
 
 import Button from "@/components/01-atoms/Button";
 
@@ -12,6 +15,8 @@ import ApparelVariantBar from "@/components/02-molecules/ApparelVariantBar";
 import Footer from "@/components/02-molecules/Footer";
 
 export default function Home() {
+  const { ImageComponent } = useApparelAsset("tshirt", { color: "black" });
+
   return (
     <>
       <div className="container mx-auto px-4 lg:px-40 xl:px-64">
@@ -21,12 +26,9 @@ export default function Home() {
           <div className="flex flex-wrap">
             <div className="w-full lg:w-1/2 pr-10">
               <div className="flex justify-center">
-                <Image
-                  src="/blank-apparels/tshirt-male-front.png"
-                  alt="Tshirt Male Front"
-                  width={530}
-                  height={630}
-                />
+                <div className="relative bg-white">
+                  <ImageComponent />
+                </div>
               </div>
             </div>
             <div className="w-full lg:w-1/2">
