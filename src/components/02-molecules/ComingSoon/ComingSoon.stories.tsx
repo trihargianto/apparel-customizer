@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import ComingSoon from "./ComingSoon";
 
 const meta = {
-  title: "components/Atoms/ComingSoon",
+  title: "components/Molecules/ComingSoon",
   component: ComingSoon,
 } satisfies Meta<typeof ComingSoon>;
 

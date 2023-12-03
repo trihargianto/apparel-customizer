@@ -34,7 +34,7 @@ const ControlBar = (props: ControlBarPropTypes) => {
   ];
 
   return (
-    <Card className={clsx("justify-end", props.className)}>
+    <Card className={clsx("flex justify-end gap-2", props.className)}>
       {buttonIcons.map((buttonIcon, index) => (
         <Button
           key={`button-icon-${index}`}
@@ -42,7 +42,7 @@ const ControlBar = (props: ControlBarPropTypes) => {
           size="sm"
           disabled={buttonIcon.isDisabled}
         >
-          <buttonIcon.component className="w-5 h-5" />
+          <buttonIcon.component className="h-5 w-5" />
         </Button>
       ))}
     </Card>

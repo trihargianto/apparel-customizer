@@ -15,9 +15,9 @@ const Card = ({
   return (
     <div
       className={clsx(
-        "flex gap-2 py-3 px-3 bg-white rounded-lg",
+        "rounded-lg bg-white px-3 py-3",
         isBordered ? "border border-gray-300" : "",
-        className
+        className,
       )}
     >
       {children}

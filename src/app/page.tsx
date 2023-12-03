@@ -8,11 +8,10 @@ import {
 import { useApparelAsset } from "@/hooks/useApparelAsset";
 
 import Button from "@/components/01-atoms/Button";
-
 import ControlBar from "@/components/02-molecules/ControlBar/ControlBar";
-import ApparelAssetsBar from "@/components/02-molecules/ApparelAssetBar";
-import ApparelVariantBar from "@/components/02-molecules/ApparelVariantBar";
+import ApparelVariantBar from "@/components/03-organisms/ApparelVariantBar";
 import Footer from "@/components/02-molecules/Footer";
+import ApparelAssetsBar from "@/components/03-organisms/ApparelAssetBar";
 
 export default function Home() {
   const { ImageComponent } = useApparelAsset("tshirt", { color: "black" });
@@ -24,7 +23,7 @@ export default function Home() {
           <ControlBar className="mb-3 lg:mb-10" />
 
           <div className="flex flex-wrap">
-            <div className="w-full lg:w-1/2 pr-10">
+            <div className="w-full pr-10 lg:w-1/2">
               <div className="flex justify-center">
                 <ImageComponent />
               </div>
@@ -34,21 +33,21 @@ export default function Home() {
 
               <ApparelAssetsBar className="mt-3" />
 
-              <p className="text-lg text-gray-600 mt-5 lg:mt-8">
+              <p className="mt-5 text-lg text-gray-600 lg:mt-8">
                 Change Apparel
               </p>
 
               <ApparelVariantBar className="mt-3" />
 
-              <div className="flex gap-5 mt-6 lg:mt-8">
+              <div className="mt-6 flex gap-5 lg:mt-8">
                 <Button variant="secondary" size="md">
-                  <ArrowDownTrayIcon className="w-5 h-5" />
+                  <ArrowDownTrayIcon className="h-5 w-5" />
 
                   <span className="ml-2">Save as image</span>
                 </Button>
 
                 <Button variant="primary" size="md" disabled>
-                  <ShoppingBagIcon className="w-5 h-5" />
+                  <ShoppingBagIcon className="h-5 w-5" />
 
                   <span className="ml-2">Order this apparel</span>
                 </Button>
