@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Button, { buttonVariants, buttonSizes } from "./Button";
 
 const meta = {
-  title: "components/Button",
+  title: "components/Atoms/Button",
   component: Button,
   argTypes: {
     size: {

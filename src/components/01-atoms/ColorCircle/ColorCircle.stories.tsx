@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import ColorCircle, { colors } from "./ColorCircle";
 
 const meta = {
-  title: "components/ColorCircle",
+  title: "components/Atoms/ColorCircle",
   component: ColorCircle,
   argTypes: {
     color: {
