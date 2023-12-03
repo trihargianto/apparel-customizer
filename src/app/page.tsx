@@ -28,7 +28,7 @@ export default function Home() {
           {IS_CONTROL_BAR_VISIBLE && <ControlBar className="mb-3 lg:mb-10" />}
 
           <div className="flex flex-wrap">
-            <div className="flex w-full justify-center lg:w-1/2 lg:pr-10">
+            <div className="flex w-full items-start justify-center lg:w-1/2 lg:pr-10">
               <ImageComponent />
             </div>
             <div className="w-full lg:w-1/2">
