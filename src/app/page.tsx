@@ -18,7 +18,7 @@ export default function Home() {
   const { ImageComponent } = useApparelAsset("tshirt", { color: "black" });
 
   function onSaveAsImageClick() {
-    window.alert("Save as image clicked!");
+    window.alert("Save as image clicked");
   }
 
   return (
