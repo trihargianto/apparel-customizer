@@ -1,13 +1,14 @@
 "use client";
 
-import {
-  ArrowDownTrayIcon,
-  ShoppingBagIcon,
-} from "@heroicons/react/24/outline";
+import { useContext } from "react";
+import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
 
+// Hooks, Context, Constants, etc
 import { useApparelAsset } from "@/hooks/useApparelAsset";
+import { ApparelContext } from "@/contexts/ApparelContext";
 import { IS_CONTROL_BAR_VISIBLE } from "@/constants/config";
 
+// Components
 import Button from "@/components/01-atoms/Button";
 import ControlBar from "@/components/02-molecules/ControlBar/ControlBar";
 import ApparelVariantBar from "@/components/03-organisms/ApparelVariantBar";
@@ -15,7 +16,11 @@ import Footer from "@/components/02-molecules/Footer";
 import ApparelAssetsBar from "@/components/03-organisms/ApparelAssetBar";
 
 export default function Home() {
-  const { ImageComponent } = useApparelAsset("tshirt", { color: "black" });
+  const apparel = useContext(ApparelContext);
+
+  const { ImageComponent } = useApparelAsset(apparel.type, {
+    color: apparel.color,
+  });
 
   function onSaveAsImageClick() {
     window.alert("Save as image clicked");

@@ -1,5 +1,7 @@
+import React from "react";
 import type { Preview } from "@storybook/react";
 
+import { ApparelProvider } from "../src/contexts/ApparelContext";
 import "../src/app/globals.css";
 
 const preview: Preview = {
@@ -12,6 +14,14 @@ const preview: Preview = {
       },
     },
   },
+
+  decorators: [
+    (Story) => (
+      <ApparelProvider>
+        <Story />
+      </ApparelProvider>
+    ),
+  ],
 };
 
 export default preview;

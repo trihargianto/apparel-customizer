@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
+import { ApparelProvider } from "@/contexts/ApparelContext";
+
 import Navbar from "@/components/02-molecules/Navbar";
 
 import "./globals.css";
@@ -20,9 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Navbar />
+        <ApparelProvider>
+          <Navbar />
 
-        {children}
+          {children}
+        </ApparelProvider>
       </body>
     </html>
   );

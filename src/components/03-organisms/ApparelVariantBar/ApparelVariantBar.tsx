@@ -1,27 +1,45 @@
+import { useContext } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 
-import { ApparelColorTypes } from "@/hooks/useApparelAsset";
+import type { ApparelColorTypes, ApparelTypes } from "@/hooks/useApparelAsset";
+import {
+  ApparelContext,
+  ApparelDispatchContext,
+} from "@/contexts/ApparelContext";
 
 import Card from "@/components/01-atoms/Card";
 import ColorCircle from "@/components/01-atoms/ColorCircle";
 import Button from "@/components/01-atoms/Button";
 
+/**
+ * TYPES
+ */
 type ApparelVariantBarPropTypes = {
   className?: string;
   children?: React.ReactNode;
 };
 
+/**
+ * MAIN COMPONENT
+ */
 const ApparelVariantBar = (props: ApparelVariantBarPropTypes) => {
   const colorOptions: ApparelColorTypes[] = ["black", "white", "gray", "navy"];
+  const apparelTypeOptions: ApparelTypes[] = ["tshirt", "hoodie"];
 
-  function onApparelClick() {
-    window.alert("onApparelClick executed");
+  /**
+   * APPAREL SELECTION
+   */
+  const apparel = useContext(ApparelContext);
+  const dispatchApparel = useContext(ApparelDispatchContext);
+
+  function onApparelClick(type: ApparelTypes) {
+    dispatchApparel({ type: "type-changed", payload: type });
   }
 
-  function onColorCircleClick() {
-    window.alert("onColorCircleClick executed");
+  function onColorCircleClick(color: ApparelColorTypes) {
+    dispatchApparel({ type: "color-changed", payload: color });
   }
 
   return (
@@ -52,7 +70,7 @@ const ApparelVariantBar = (props: ApparelVariantBarPropTypes) => {
                   <button
                     key={`${color}-${index}`}
                     type="button"
-                    onClick={onColorCircleClick}
+                    onClick={() => onColorCircleClick(color)}
                   >
                     <ColorCircle color={color} />
                   </button>
@@ -83,8 +101,8 @@ const ApparelVariantBar = (props: ApparelVariantBarPropTypes) => {
               </p>
 
               <div>
-                {["Tshirt", "Hoodie"].map((item, index) => {
-                  const isActive = item === "Tshirt";
+                {apparelTypeOptions.map((item, index) => {
+                  const isActive = item === apparel.type;
 
                   return (
                     <button
@@ -94,9 +112,9 @@ const ApparelVariantBar = (props: ApparelVariantBarPropTypes) => {
                         "flex w-full justify-between bg-white px-4 py-2 text-left hover:bg-slate-100",
                         isActive ? "bg-slate-100" : "bg-white",
                       )}
-                      onClick={onApparelClick}
+                      onClick={() => onApparelClick(item)}
                     >
-                      <span>{item}</span>
+                      <span className="first-letter:uppercase">{item}</span>
                       {isActive && <CheckCircleIcon width={24} height={24} />}
                     </button>
                   );
