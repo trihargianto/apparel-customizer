@@ -1,7 +1,9 @@
-import { useCallback } from "react";
 import Image from "next/image";
 
-type ApparelTypes = "tshirt" | "hoodie";
+/**
+ * TYPES
+ */
+export type ApparelTypes = "tshirt" | "hoodie";
 
 export type ApparelColorTypes = "black" | "white" | "gray" | "navy";
 
@@ -15,9 +17,12 @@ type ApparelOptionTypes = {
   gender?: ApparelGenderTypes;
 };
 
+/**
+ * MAIN HOOKS
+ */
 export const useApparelAsset = (
   apparel: ApparelTypes,
-  options?: ApparelOptionTypes
+  options?: ApparelOptionTypes,
 ) => {
   const { color = "black", gender = "male", side = "front" } = options ?? {};
 
