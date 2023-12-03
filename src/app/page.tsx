@@ -26,9 +26,7 @@ export default function Home() {
           <div className="flex flex-wrap">
             <div className="w-full lg:w-1/2 pr-10">
               <div className="flex justify-center">
-                <div className="relative bg-white">
-                  <ImageComponent />
-                </div>
+                <ImageComponent />
               </div>
             </div>
             <div className="w-full lg:w-1/2">

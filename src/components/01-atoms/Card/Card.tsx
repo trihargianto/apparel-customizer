@@ -3,16 +3,20 @@ import clsx from "clsx";
 
 export type CardPropTypes = {
   className?: string;
+  isBordered?: boolean;
   children: React.ReactNode;
 };
 
-const Card = (props: CardPropTypes) => {
-  const { className = "", children } = props ?? {};
-
+const Card = ({
+  isBordered = true,
+  className = "",
+  children,
+}: CardPropTypes) => {
   return (
     <div
       className={clsx(
-        "flex gap-2 py-3 px-3 bg-white border border-gray-300 rounded-lg",
+        "flex gap-2 py-3 px-3 bg-white rounded-lg",
+        isBordered ? "border border-gray-300" : "",
         className
       )}
     >
