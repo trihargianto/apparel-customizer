@@ -5,7 +5,8 @@ import {
 } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 
-import Button from "../../01-atoms/Button";
+import Button from "@/components/01-atoms/Button";
+import Card from "@/components/01-atoms/Card";
 
 type ControlBarPropTypes = {
   className?: string;
@@ -33,12 +34,7 @@ const ControlBar = (props: ControlBarPropTypes) => {
   ];
 
   return (
-    <div
-      className={clsx(
-        "flex gap-3 p-3 bg-white border border-gray-300 rounded-lg justify-end",
-        props.className
-      )}
-    >
+    <Card className={clsx("justify-end", props.className)}>
       {buttonIcons.map((buttonIcon, index) => (
         <Button
           key={`button-icon-${index}`}
@@ -49,7 +45,7 @@ const ControlBar = (props: ControlBarPropTypes) => {
           <buttonIcon.component className="w-5 h-5" />
         </Button>
       ))}
-    </div>
+    </Card>
   );
 };
 

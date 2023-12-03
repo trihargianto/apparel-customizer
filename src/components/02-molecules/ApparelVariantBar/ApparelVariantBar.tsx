@@ -1,6 +1,7 @@
 import { Popover, Transition } from "@headlessui/react";
-import clsx from "clsx";
 import { ApparelColorTypes } from "@/hooks/useApparelAsset";
+
+import Card from "@/components/01-atoms/Card";
 import ColorCircle from "@/components/01-atoms/ColorCircle";
 
 type ApparelVariantBarPropTypes = {
@@ -12,12 +13,7 @@ const ApparelVariantBar = (props: ApparelVariantBarPropTypes) => {
   const colorOptions: ApparelColorTypes[] = ["black", "white", "gray", "navy"];
 
   return (
-    <div
-      className={clsx(
-        "flex gap-3 py-3 pl-3 border border-gray-300 bg-white rounded-lg",
-        props.className
-      )}
-    >
+    <Card className={props.className}>
       <Popover className="relative">
         <Popover.Button>
           <ColorCircle />
@@ -46,7 +42,7 @@ const ApparelVariantBar = (props: ApparelVariantBarPropTypes) => {
           </Popover.Panel>
         </Transition>
       </Popover>
-    </div>
+    </Card>
   );
 };
 

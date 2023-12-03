@@ -4,8 +4,9 @@ import {
   PhotoIcon,
   DocumentTextIcon,
 } from "@heroicons/react/24/outline";
-import clsx from "clsx";
-import Button from "../../01-atoms/Button";
+
+import Button from "@/components/01-atoms/Button";
+import Card from "@/components/01-atoms/Card";
 
 type ApparelAssetPropTypes = {
   className?: string;
@@ -34,12 +35,7 @@ const ApparelAssetsBar = (props: ApparelAssetPropTypes) => {
   ];
 
   return (
-    <div
-      className={clsx(
-        "flex gap-2 py-3 pl-3 bg-white border border-gray-300 rounded-lg",
-        props.className
-      )}
-    >
+    <Card className={props.className}>
       {buttonIcons.map((buttonIcon, index) => (
         <Button
           key={`button-icon-${index}`}
@@ -50,7 +46,7 @@ const ApparelAssetsBar = (props: ApparelAssetPropTypes) => {
           <buttonIcon.component className="w-6 h-6" />
         </Button>
       ))}
-    </div>
+    </Card>
   );
 };
 
