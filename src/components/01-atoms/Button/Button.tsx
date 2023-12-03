@@ -1,18 +1,20 @@
 import React from "react";
 import clsx from "clsx";
 
-type ButtonVariantTypes = "primary" | "secondary" | "tertiary" | "naked";
+import {
+  ButtonPropTypes,
+  ButtonSizeTypes,
+  ButtonVariantTypes,
+} from "./Button.types";
 
-type ButtonSizeTypes = "xs" | "sm" | "md";
+export const buttonVariants: ButtonVariantTypes[] = [
+  "primary",
+  "secondary",
+  "tertiary",
+  "naked",
+];
 
-export interface ButtonPropTypes
-  extends React.ComponentPropsWithoutRef<"button"> {
-  children: React.ReactNode;
-  variant?: ButtonVariantTypes;
-  size?: ButtonSizeTypes;
-  isRounded?: boolean;
-  isActive?: boolean;
-}
+export const buttonSizes: ButtonSizeTypes[] = ["md", "sm", "xs"];
 
 const buttonClasses = {
   base: "rounded-sm inline-flex items-center",
