@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import clsx from "clsx";
 
 import {
@@ -41,12 +41,16 @@ const buttonClasses = {
 const Button = ({
   variant = "primary",
   size = "md",
+  as = "button",
   children,
   className,
   ...restProps
 }: ButtonPropTypes) => {
+  const Element = as;
+
   return (
-    <button
+    /** @ts-ignore-next */
+    <Element
       className={clsx(
         buttonClasses.variant(variant),
         buttonClasses.size(size),
@@ -56,7 +60,7 @@ const Button = ({
       {...restProps}
     >
       {children}
-    </button>
+    </Element>
   );
 };
 

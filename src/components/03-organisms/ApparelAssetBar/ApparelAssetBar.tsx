@@ -1,3 +1,4 @@
+import type { EmojiClickData } from "emoji-picker-react";
 import dynamic from "next/dynamic";
 import { Tab } from "@headlessui/react";
 import clsx from "clsx";
@@ -23,6 +24,12 @@ const ApparelAssetsBar = (props: ApparelAssetPropTypes) => {
 
   function onAddTextClick() {
     window.alert("Add Text button clicked!");
+  }
+
+  function onEmojiClick(selectedEmojiObject: EmojiClickData) {
+    window.alert("Emoji clicked!");
+
+    console.log("selected emoji =>", selectedEmojiObject);
   }
 
   return (
@@ -68,6 +75,7 @@ const ApparelAssetsBar = (props: ApparelAssetPropTypes) => {
                 previewConfig={{
                   defaultCaption: "Choose your emoji",
                 }}
+                onEmojiClick={onEmojiClick}
               />
             </Card>
           </Tab.Panel>
