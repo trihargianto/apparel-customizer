@@ -1816,6 +1816,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@headlessui/react@npm:^1.7.17":
+  version: 1.7.17
+  resolution: "@headlessui/react@npm:1.7.17"
+  dependencies:
+    client-only: "npm:^0.0.1"
+  peerDependencies:
+    react: ^16 || ^17 || ^18
+    react-dom: ^16 || ^17 || ^18
+  checksum: a17d819e8c7aca764479eba1bd1bfe28d9f99ce4c16a296986f902ee040e57e242bd21d525570118c318cf1f013c9b56c6568980686774ca1881e82ca5cdeebe
+  languageName: node
+  linkType: hard
+
 "@heroicons/react@npm:^2.0.18":
   version: 2.0.18
   resolution: "@heroicons/react@npm:2.0.18"
@@ -4944,6 +4956,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "apparel-customizer-next@workspace:."
   dependencies:
+    "@headlessui/react": "npm:^1.7.17"
     "@heroicons/react": "npm:^2.0.18"
     "@storybook/addon-essentials": "npm:^7.6.3"
     "@storybook/addon-interactions": "npm:^7.6.3"
@@ -4958,6 +4971,7 @@ __metadata:
     "@types/react-dom": "npm:^18"
     autoprefixer: "npm:^10.0.1"
     clsx: "npm:^2.0.0"
+    emoji-picker-react: "npm:^4.5.16"
     eslint: "npm:^8"
     eslint-config-next: "npm:14.0.3"
     eslint-config-prettier: "npm:^9.0.0"
@@ -5886,7 +5900,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"client-only@npm:0.0.1":
+"client-only@npm:0.0.1, client-only@npm:^0.0.1":
   version: 0.0.1
   resolution: "client-only@npm:0.0.1"
   checksum: 9d6cfd0c19e1c96a434605added99dff48482152af791ec4172fb912a71cff9027ff174efd8cdb2160cc7f377543e0537ffc462d4f279bc4701de3f2a3c4b358
@@ -6782,6 +6796,15 @@ __metadata:
     minimalistic-assert: "npm:^1.0.1"
     minimalistic-crypto-utils: "npm:^1.0.1"
   checksum: 5f361270292c3b27cf0843e84526d11dec31652f03c2763c6c2b8178548175ff5eba95341dd62baff92b2265d1af076526915d8af6cc9cb7559c44a62f8ca6e2
+  languageName: node
+  linkType: hard
+
+"emoji-picker-react@npm:^4.5.16":
+  version: 4.5.16
+  resolution: "emoji-picker-react@npm:4.5.16"
+  peerDependencies:
+    react: ">=16"
+  checksum: 21fb56fa03cb741df49f7d4810ac15251ae295f8fc218277f366c0c9cc65db475ea5be858e9159f0353035548ad0e629719759b29264000d4eedaf3fa8a252d5
   languageName: node
   linkType: hard
 

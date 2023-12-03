@@ -1,29 +1,27 @@
-import React from "react";
+import React, { Component } from "react";
 import clsx from "clsx";
 
-type ButtonVariantTypes = "primary" | "secondary" | "tertiary" | "naked";
+import {
+  ButtonPropTypes,
+  ButtonSizeTypes,
+  ButtonVariantTypes,
+} from "./Button.types";
 
-type ButtonSizeTypes = "xs" | "sm" | "md";
+export const buttonVariants: ButtonVariantTypes[] = [
+  "primary",
+  "secondary",
+  "naked",
+];
 
-export interface ButtonPropTypes
-  extends React.ComponentPropsWithoutRef<"button"> {
-  children: React.ReactNode;
-  variant?: ButtonVariantTypes;
-  size?: ButtonSizeTypes;
-  isRounded?: boolean;
-  isActive?: boolean;
-}
+export const buttonSizes: ButtonSizeTypes[] = ["md", "sm", "xs"];
 
 const buttonClasses = {
-  base: "rounded-sm inline-flex items-center",
-
   variant: (variant: ButtonVariantTypes) => {
     const variantClasses: { [key: string]: string } = {
-      primary:
-        "text-white bg-blue-500 border-blue-500 border hover:bg-blue-600",
+      primary: "text-white bg-blue-600 hover:bg-blue-500",
       secondary:
-        "text-slate-600 bg-slate-200 border-slate-300 border hover:bg-slate-300",
-      naked: "text-slate-600 bg-transparent",
+        "bg-white text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50",
+      naked: "text-slate-600 bg-transparent !shadow-none hover:text-slate-500",
     };
 
     return variantClasses[variant];
@@ -31,7 +29,7 @@ const buttonClasses = {
 
   size: (size: ButtonSizeTypes) => {
     const sizeClasses: { [key: string]: string } = {
-      xs: "px-2 py-1.5 text-sm",
+      xs: "px-2 py-1.5 text-xs",
       sm: "px-3 py-2",
       md: "px-4 py-3",
     };
@@ -43,22 +41,26 @@ const buttonClasses = {
 const Button = ({
   variant = "primary",
   size = "md",
+  as = "button",
   children,
   className,
   ...restProps
 }: ButtonPropTypes) => {
+  const Element = as;
+
   return (
-    <button
-      className={clsx([
-        buttonClasses.base,
+    /** @ts-ignore-next */
+    <Element
+      className={clsx(
         buttonClasses.variant(variant),
         buttonClasses.size(size),
         className,
-      ])}
+        "inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm",
+      )}
       {...restProps}
     >
       {children}
-    </button>
+    </Element>
   );
 };
 
