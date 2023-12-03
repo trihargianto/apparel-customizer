@@ -6,6 +6,8 @@ type ColorCirclePropTypes = {
   color?: ApparelColorTypes;
 };
 
+export const colors: string[] = ["black", "gray", "navy", "white"];
+
 const colorCircleClasses = {
   color: (color: ApparelColorTypes) => {
     const colors: Record<ApparelColorTypes, string> = {
