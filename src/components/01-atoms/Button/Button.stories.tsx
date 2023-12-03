@@ -31,10 +31,9 @@ export const Default: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <div className="flex gap-3 items-center">
+    <div className="flex items-center gap-3">
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
-      <Button variant="tertiary">Tertiary</Button>
       <Button variant="naked">Naked</Button>
     </div>
   ),
@@ -42,7 +41,7 @@ export const Variants: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div className="flex gap-3 items-center">
+    <div className="flex items-center gap-3">
       <Button size="xs">Extra Small</Button>
       <Button size="sm">Small</Button>
       <Button size="md">Medium</Button>

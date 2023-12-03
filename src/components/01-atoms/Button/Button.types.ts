@@ -1,4 +1,4 @@
-export type ButtonVariantTypes = "primary" | "secondary" | "tertiary" | "naked";
+export type ButtonVariantTypes = "primary" | "secondary" | "naked";
 
 export type ButtonSizeTypes = "xs" | "sm" | "md";
 
