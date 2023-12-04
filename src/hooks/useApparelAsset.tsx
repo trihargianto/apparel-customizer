@@ -47,7 +47,7 @@ export const useApparelAsset = (
     };
 
     // TODO: Make canvas available to the app via context
-  }, [color]);
+  }, [apparel, color]);
 
   const ImageComponent = () => (
     <div
