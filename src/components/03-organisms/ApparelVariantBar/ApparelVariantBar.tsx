@@ -3,7 +3,6 @@ import { Popover, Transition } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 
-import type { ApparelColorTypes, ApparelTypes } from "@/hooks/useApparelAsset";
 import {
   ApparelContext,
   ApparelDispatchContext,

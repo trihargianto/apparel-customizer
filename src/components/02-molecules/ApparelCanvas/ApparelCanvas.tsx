@@ -4,43 +4,28 @@ import * as fabric from "fabric";
 /**
  * TYPES
  */
-export type ApparelTypes = "tshirt" | "hoodie";
-
-export type ApparelColorTypes = "black" | "white" | "gray" | "navy";
-
-type ApparelSideTypes = "front" | "back";
-
-type ApparelGenderTypes = "male" | "female";
-
 type ApparelOptionTypes = {
+  apparel: ApparelTypes;
   color?: ApparelColorTypes;
   side?: ApparelSideTypes;
   gender?: ApparelGenderTypes;
 };
 
-/**
- * MAIN HOOKS
- */
-export const useApparelAsset = (
-  apparel: ApparelTypes,
-  options?: ApparelOptionTypes,
-) => {
-  const { color = "black", gender = "male", side = "front" } = options ?? {};
+const ApparelCanvas = ({
+  apparel,
+  color = "black",
+  gender = "male",
+  side = "front",
+}: ApparelOptionTypes) => {
   const canvasElement = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     // @ts-ignore-next
     const canvas = new fabric.Canvas(canvasElement.current);
 
-    // TODO: Remove dummyRectangle
-    const dummyRectangle = new fabric.Rect({
-      backgroundColor: "black",
-      fill: "black",
-      width: 50,
-      height: 50,
-    });
+    const text = new fabric.FabricText("hello world", { left: 100, top: 100 });
 
-    canvas.add(dummyRectangle);
+    canvas.add(text);
 
     return () => {
       canvas.dispose();
@@ -49,7 +34,7 @@ export const useApparelAsset = (
     // TODO: Make canvas available to the app via context
   }, [apparel, color]);
 
-  const ImageComponent = () => (
+  return (
     <div
       style={{
         backgroundImage: `url('/apparels/${apparel}/${apparel}-${gender}-${color}-${side}.png')`,
@@ -78,6 +63,6 @@ export const useApparelAsset = (
       ></canvas>
     </div>
   );
-
-  return { ImageComponent };
 };
+
+export default ApparelCanvas;

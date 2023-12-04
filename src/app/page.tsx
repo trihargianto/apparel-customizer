@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
 
 // Hooks, Context, Constants, etc
-import { useApparelAsset } from "@/hooks/useApparelAsset";
 import { ApparelContext } from "@/contexts/ApparelContext";
 import { IS_CONTROL_BAR_VISIBLE } from "@/constants/config";
 
@@ -13,14 +12,11 @@ import Button from "@/components/01-atoms/Button";
 import ControlBar from "@/components/02-molecules/ControlBar/ControlBar";
 import ApparelVariantBar from "@/components/03-organisms/ApparelVariantBar";
 import Footer from "@/components/02-molecules/Footer";
+import ApparelCanvas from "@/components/02-molecules/ApparelCanvas";
 import ApparelAssetsBar from "@/components/03-organisms/ApparelAssetBar";
 
 export default function Home() {
   const apparel = useContext(ApparelContext);
-
-  const { ImageComponent } = useApparelAsset(apparel.type, {
-    color: apparel.color,
-  });
 
   function onSaveAsImageClick() {
     window.alert("Save as image clicked");
@@ -34,7 +30,7 @@ export default function Home() {
 
           <div className="flex flex-wrap">
             <div className="flex w-full items-start justify-center lg:w-1/2 lg:pr-10">
-              <ImageComponent />
+              <ApparelCanvas apparel={apparel.type} color={apparel.color} />
             </div>
             <div className="w-full lg:w-1/2">
               <p className="text-lg text-gray-600">Assets and Resources</p>
