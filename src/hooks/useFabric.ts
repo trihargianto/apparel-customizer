@@ -20,11 +20,18 @@ export function useFabric() {
     _rerenderCanvas();
   }
 
+  async function addImageToCanvas(imageUrl: string) {
+    const imageObject = await fabric.FabricImage.fromURL(imageUrl);
+
+    canvas?.add(imageObject);
+  }
+
   function _rerenderCanvas() {
     canvas?.renderAll();
   }
 
   return {
     addTextToCanvas,
+    addImageToCanvas,
   };
 }

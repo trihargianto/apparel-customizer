@@ -24,7 +24,7 @@ const EmojiPicker = dynamic(() => import("emoji-picker-react"), {
 const ApparelAssetsBar = ({ className }: ApparelAssetPropTypes) => {
   const [inputValue, setInputValue] = useState("");
 
-  const { addTextToCanvas } = useFabric();
+  const { addTextToCanvas, addImageToCanvas } = useFabric();
 
   const tabs = ["Text", "Emoji", "Image", "Shape"];
 
@@ -33,9 +33,8 @@ const ApparelAssetsBar = ({ className }: ApparelAssetPropTypes) => {
   }
 
   function onEmojiClick(selectedEmojiObject: EmojiClickData) {
-    window.alert("Emoji clicked!");
-
-    console.log("selected emoji =>", selectedEmojiObject);
+    // addTextToCanvas(selectedEmojiObject.emoji);
+    addImageToCanvas(selectedEmojiObject.imageUrl);
   }
 
   return (
