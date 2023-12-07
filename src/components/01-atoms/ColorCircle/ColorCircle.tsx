@@ -1,7 +1,5 @@
 import clsx from "clsx";
 
-import { ApparelColorTypes } from "@/hooks/useApparelAsset";
-
 type ColorCircleSizeTypes = "sm" | "md";
 
 type ColorCirclePropTypes = {

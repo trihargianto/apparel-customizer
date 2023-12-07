@@ -1,55 +1,42 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useContext } from "react";
 import * as fabric from "fabric";
+
+import { CanvasDispatchContext } from "@/contexts/CanvasContext";
 
 /**
  * TYPES
  */
-export type ApparelTypes = "tshirt" | "hoodie";
-
-export type ApparelColorTypes = "black" | "white" | "gray" | "navy";
-
-type ApparelSideTypes = "front" | "back";
-
-type ApparelGenderTypes = "male" | "female";
-
 type ApparelOptionTypes = {
+  apparel: ApparelTypes;
   color?: ApparelColorTypes;
   side?: ApparelSideTypes;
   gender?: ApparelGenderTypes;
 };
 
-/**
- * MAIN HOOKS
- */
-export const useApparelAsset = (
-  apparel: ApparelTypes,
-  options?: ApparelOptionTypes,
-) => {
-  const { color = "black", gender = "male", side = "front" } = options ?? {};
+const ApparelCanvas = ({
+  apparel,
+  color = "black",
+  gender = "male",
+  side = "front",
+}: ApparelOptionTypes) => {
+  const dispatchCanvas = useContext(CanvasDispatchContext);
   const canvasElement = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     // @ts-ignore-next
-    const canvas = new fabric.Canvas(canvasElement.current);
+    const fabricCanvas = new fabric.Canvas(canvasElement.current);
 
-    // TODO: Remove dummyRectangle
-    const dummyRectangle = new fabric.Rect({
-      backgroundColor: "black",
-      fill: "black",
-      width: 50,
-      height: 50,
+    dispatchCanvas({
+      type: "canvas-updated",
+      payload: fabricCanvas,
     });
 
-    canvas.add(dummyRectangle);
-
     return () => {
-      canvas.dispose();
+      fabricCanvas.dispose();
     };
+  }, [dispatchCanvas]);
 
-    // TODO: Make canvas available to the app via context
-  }, [apparel, color]);
-
-  const ImageComponent = () => (
+  return (
     <div
       style={{
         backgroundImage: `url('/apparels/${apparel}/${apparel}-${gender}-${color}-${side}.png')`,
@@ -63,7 +50,6 @@ export const useApparelAsset = (
       <canvas
         ref={canvasElement}
         style={{
-          border: "1px dashed #f0f0f0",
           position: "absolute",
           left: 0,
           right: 0,
@@ -78,6 +64,6 @@ export const useApparelAsset = (
       ></canvas>
     </div>
   );
-
-  return { ImageComponent };
 };
+
+export default ApparelCanvas;

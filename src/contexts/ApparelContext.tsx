@@ -2,8 +2,6 @@
 
 import { createContext, useReducer } from "react";
 
-import type { ApparelTypes, ApparelColorTypes } from "@/hooks/useApparelAsset";
-
 /**
  * TYPES
  */
