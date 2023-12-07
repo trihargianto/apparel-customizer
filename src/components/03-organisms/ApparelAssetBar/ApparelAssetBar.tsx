@@ -1,7 +1,11 @@
 import type { EmojiClickData } from "emoji-picker-react";
+
+import { useContext, useState } from "react";
 import dynamic from "next/dynamic";
 import { Tab } from "@headlessui/react";
 import clsx from "clsx";
+
+import { useFabric } from "@/hooks/useFabric";
 
 import Card from "@/components/01-atoms/Card";
 import ComingSoon from "@/components/02-molecules/ComingSoon";
@@ -17,13 +21,15 @@ const EmojiPicker = dynamic(() => import("emoji-picker-react"), {
   ssr: false,
 });
 
-const ApparelAssetsBar = (props: ApparelAssetPropTypes) => {
-  const { className } = props ?? {};
+const ApparelAssetsBar = ({ className }: ApparelAssetPropTypes) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const { addTextToCanvas } = useFabric();
 
   const tabs = ["Text", "Emoji", "Image", "Shape"];
 
   function onAddTextClick() {
-    window.alert("Add Text button clicked!");
+    addTextToCanvas(inputValue);
   }
 
   function onEmojiClick(selectedEmojiObject: EmojiClickData) {
@@ -58,7 +64,13 @@ const ApparelAssetsBar = (props: ApparelAssetPropTypes) => {
           <Tab.Panel>
             <Card isBordered={false}>
               <div className="flex gap-2">
-                <Input placeholder="Type your text here..." />
+                <Input
+                  placeholder="Type your text here..."
+                  value={inputValue}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setInputValue(e.target.value)
+                  }
+                />
                 <Button className="min-w-fit" onClick={onAddTextClick}>
                   + Add Text
                 </Button>

@@ -1,5 +1,7 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useContext } from "react";
 import * as fabric from "fabric";
+
+import { CanvasDispatchContext } from "@/contexts/CanvasContext";
 
 /**
  * TYPES
@@ -17,22 +19,22 @@ const ApparelCanvas = ({
   gender = "male",
   side = "front",
 }: ApparelOptionTypes) => {
+  const dispatchCanvas = useContext(CanvasDispatchContext);
   const canvasElement = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     // @ts-ignore-next
-    const canvas = new fabric.Canvas(canvasElement.current);
+    const fabricCanvas = new fabric.Canvas(canvasElement.current);
 
-    const text = new fabric.FabricText("hello world", { left: 100, top: 100 });
-
-    canvas.add(text);
+    dispatchCanvas({
+      type: "canvas-updated",
+      payload: fabricCanvas,
+    });
 
     return () => {
-      canvas.dispose();
+      fabricCanvas.dispose();
     };
-
-    // TODO: Make canvas available to the app via context
-  }, [apparel, color]);
+  }, [dispatchCanvas]);
 
   return (
     <div
@@ -48,7 +50,6 @@ const ApparelCanvas = ({
       <canvas
         ref={canvasElement}
         style={{
-          border: "1px dashed #f0f0f0",
           position: "absolute",
           left: 0,
           right: 0,

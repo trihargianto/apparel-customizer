@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { ChangeEventHandler } from "react";
 
 type InputSizeTypes = "xs" | "sm" | "md";
 
@@ -12,8 +13,14 @@ type InputPropTypes = {
   /** Text placheolder */
   placeholder?: string;
 
+  /** Input value */
+  value?: string;
+
   /** CSS Classes */
   className?: string;
+
+  /** onChange Event */
+  onChange?: any;
 };
 
 export const inputSizes: InputSizeTypes[] = ["md", "sm", "xs"];
@@ -31,10 +38,12 @@ const inputClasses = {
 };
 
 const Input = ({
-  label,
+  label = "",
   size = "md",
   placeholder = "Type here...",
-  className,
+  value = "",
+  className = "",
+  onChange = (e: any) => e,
 }: InputPropTypes) => {
   return (
     <>
@@ -55,6 +64,8 @@ const Input = ({
           inputClasses.size(size),
           className,
         )}
+        value={value}
+        onChange={onChange}
       />
     </>
   );
