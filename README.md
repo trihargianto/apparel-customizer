@@ -5,9 +5,10 @@
 
 Create a Mock Up for your apparel. Primarily built with [Next.js](https://nextjs.org/) + [Fabric.js](http://fabricjs.com/).
 
-### Live Demo
+### Live
 
-https://apparel-customizer.vercel.app/
+- Demo: https://apparel-customizer.vercel.app/
+- Storybook: https://apparel-customizer-storybook.vercel.app/
 
 ### Run the project locally
 
