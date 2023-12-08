@@ -15,15 +15,52 @@ export function useFabric() {
       top: 20,
     });
 
-    canvas?.add(textObject);
+    _addToCanvas(textObject);
+  }
 
-    _rerenderCanvas();
+  function addCircleToCanvas() {
+    const circleObject = new fabric.Circle({
+      left: 20,
+      top: 20,
+      fill: "#000",
+      radius: 40,
+    });
+
+    _addToCanvas(circleObject);
+  }
+
+  function addRectangleToCanvas() {
+    const rectangleObject = new fabric.Rect({
+      left: 20,
+      top: 20,
+      fill: "#000",
+      width: 80,
+      height: 80,
+    });
+
+    _addToCanvas(rectangleObject);
+  }
+
+  function addLineToCanvas() {
+    const lineObject = new fabric.Line([50, 100, 200, 200], {
+      left: 20,
+      top: 20,
+      stroke: "#000",
+      strokeWidth: 2,
+    });
+
+    _addToCanvas(lineObject);
   }
 
   async function addImageToCanvas(imageUrl: string) {
     const imageObject = await fabric.FabricImage.fromURL(imageUrl);
 
-    canvas?.add(imageObject);
+    _addToCanvas(imageObject);
+  }
+
+  function _addToCanvas(fabricObject: any) {
+    canvas?.add(fabricObject);
+    _rerenderCanvas();
   }
 
   function _rerenderCanvas() {
@@ -31,6 +68,9 @@ export function useFabric() {
   }
 
   return {
+    addRectangleToCanvas,
+    addLineToCanvas,
+    addCircleToCanvas,
     addTextToCanvas,
     addImageToCanvas,
   };

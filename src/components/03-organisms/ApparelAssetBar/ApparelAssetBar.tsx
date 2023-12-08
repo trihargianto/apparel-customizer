@@ -1,6 +1,6 @@
 import type { EmojiClickData } from "emoji-picker-react";
 
-import { useContext, useState } from "react";
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import { Tab } from "@headlessui/react";
 import clsx from "clsx";
@@ -8,9 +8,10 @@ import clsx from "clsx";
 import { useFabric } from "@/hooks/useFabric";
 
 import Card from "@/components/01-atoms/Card";
-import ComingSoon from "@/components/02-molecules/ComingSoon";
 import Button from "@/components/01-atoms/Button";
 import Input from "@/components/01-atoms/Input";
+import ComingSoon from "@/components/02-molecules/ComingSoon";
+import ShapePicker, { ShapeTypes } from "@/components/02-molecules/ShapePicker";
 
 type ApparelAssetPropTypes = {
   className?: string;
@@ -24,17 +25,40 @@ const EmojiPicker = dynamic(() => import("emoji-picker-react"), {
 const ApparelAssetsBar = ({ className }: ApparelAssetPropTypes) => {
   const [inputValue, setInputValue] = useState("");
 
-  const { addTextToCanvas, addImageToCanvas } = useFabric();
+  const {
+    addTextToCanvas,
+    addImageToCanvas,
+    addCircleToCanvas,
+    addRectangleToCanvas,
+    addLineToCanvas,
+  } = useFabric();
 
-  const tabs = ["Text", "Emoji", "Image", "Shape"];
+  const tabs = ["Text", "Emoji", "Shape", "Image"];
 
   function onAddTextClick() {
     addTextToCanvas(inputValue);
+    setInputValue("");
   }
 
   function onEmojiClick(selectedEmojiObject: EmojiClickData) {
-    // addTextToCanvas(selectedEmojiObject.emoji);
     addImageToCanvas(selectedEmojiObject.imageUrl);
+  }
+
+  function onShapeClick(shape: ShapeTypes) {
+    switch (shape) {
+      case "circle":
+        addCircleToCanvas();
+        break;
+      case "line":
+        addLineToCanvas();
+        break;
+      case "rectangle":
+        addRectangleToCanvas();
+        break;
+      default:
+        throw new Error("`shape` is not defined");
+        break;
+    }
   }
 
   return (
@@ -91,14 +115,16 @@ const ApparelAssetsBar = ({ className }: ApparelAssetPropTypes) => {
             </Card>
           </Tab.Panel>
 
-          {/* Image Menu Content */}
+          {/* Shape Menu Content */}
           <Tab.Panel>
             <Card isBordered={false}>
-              <ComingSoon />
+              <div className="w-[200px] p-2">
+                <ShapePicker onClick={onShapeClick} />
+              </div>
             </Card>
           </Tab.Panel>
 
-          {/* Shape Menu Content */}
+          {/* Image Menu Content */}
           <Tab.Panel>
             <Card isBordered={false}>
               <ComingSoon />
