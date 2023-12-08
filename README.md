@@ -1,4 +1,6 @@
-![banner-1](https://github.com/trihargianto/apparel-customizer/assets/18502234/9e2a4738-e3e5-4cd0-8841-5c5333269678)
+# 🧦 Apparel Customizer
+
+![Screenshot 2023-12-08 at 19 01 18](https://github.com/trihargianto/apparel-customizer/assets/18502234/25903a3e-41dc-41bc-bb34-16aacc64092f)
 
 
 Create a Mock Up for your apparel. Primarily built with [Next.js](https://nextjs.org/) + [Fabric.js](http://fabricjs.com/).
