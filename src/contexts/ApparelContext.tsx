@@ -17,7 +17,7 @@ type ApparelAction = { type: "color-changed" | "type-changed"; payload?: any };
  */
 const initialStateApparel: ApparelStateTypes = {
   color: "black",
-  type: "hoodie",
+  type: "tshirt",
 };
 
 export const ApparelContext =

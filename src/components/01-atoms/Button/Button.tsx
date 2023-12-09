@@ -57,7 +57,7 @@ const Button = ({
         buttonClasses.size(size),
         className,
         "inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold shadow-sm",
-        disabled ? "cursor-auto opacity-50" : "",
+        disabled ? "cursor-auto opacity-40" : "",
       )}
       {...restProps}
     >

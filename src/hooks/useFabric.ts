@@ -1,16 +1,15 @@
 import { useContext } from "react";
-import type { Canvas } from "fabric";
+import type { FabricObject } from "fabric";
 import * as fabric from "fabric";
 
 import { CanvasContext } from "@/contexts/CanvasContext";
-import { ObjectContext, ObjectDispatchContext } from "@/contexts/ObjectContext";
-
-type FabricCanvasObjectType = Canvas | null;
+import { ObjectContext } from "@/contexts/ObjectContext";
+import { DEFAULT_OBJECT_COLOR } from "@/constants/config";
+import { FABRIC_TYPE_LINE } from "@/constants/fabricObjectTypes";
 
 export function useFabric() {
   const canvas = useContext(CanvasContext);
   const { selectedObject } = useContext(ObjectContext);
-  const dispacthObject = useContext(ObjectDispatchContext);
 
   function addTextToCanvas(text: string) {
     const textObject = new fabric.IText(text, {
@@ -25,7 +24,7 @@ export function useFabric() {
     const circleObject = new fabric.Circle({
       left: 20,
       top: 20,
-      fill: "#000",
+      fill: DEFAULT_OBJECT_COLOR,
       radius: 40,
     });
 
@@ -36,7 +35,7 @@ export function useFabric() {
     const rectangleObject = new fabric.Rect({
       left: 20,
       top: 20,
-      fill: "#000",
+      fill: DEFAULT_OBJECT_COLOR,
       width: 80,
       height: 80,
     });
@@ -48,7 +47,7 @@ export function useFabric() {
     const lineObject = new fabric.Line([50, 100, 200, 200], {
       left: 20,
       top: 20,
-      stroke: "#000",
+      stroke: DEFAULT_OBJECT_COLOR,
       strokeWidth: 2,
     });
 
@@ -65,8 +64,18 @@ export function useFabric() {
     canvas?.remove(selectedObject);
   }
 
-  function _addToCanvas(fabricObject: any) {
-    canvas?.add(fabricObject);
+  function updateObjectColor(object: FabricObject, color: string) {
+    if (object.type === FABRIC_TYPE_LINE) {
+      object.set("stroke", color);
+    } else {
+      object.set("fill", color);
+    }
+
+    _rerenderCanvas();
+  }
+
+  function _addToCanvas(object: FabricObject) {
+    canvas?.add(object);
     _rerenderCanvas();
   }
 
@@ -81,5 +90,6 @@ export function useFabric() {
     addTextToCanvas,
     addImageToCanvas,
     deleteSelectedObjectFromCanvas,
+    updateObjectColor,
   };
 }

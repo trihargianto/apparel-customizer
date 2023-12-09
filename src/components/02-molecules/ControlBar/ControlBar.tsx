@@ -1,61 +1,59 @@
-import {
-  ArrowUturnLeftIcon,
-  ArrowUturnRightIcon,
-  TrashIcon,
-} from "@heroicons/react/24/outline";
+import { useContext, useState } from "react";
+import { TrashIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
+
+import { useFabric } from "@/hooks/useFabric";
+import { ObjectContext } from "@/contexts/ObjectContext";
+import { DEFAULT_OBJECT_COLOR } from "@/constants/config";
+import { FABRIC_TYPE_IMAGE } from "@/constants/fabricObjectTypes";
 
 import Button from "@/components/01-atoms/Button";
 import Card from "@/components/01-atoms/Card";
-import { useFabric } from "@/hooks/useFabric";
-import { MouseEventHandler, useContext } from "react";
-import { ObjectContext } from "@/contexts/ObjectContext";
 
 type ControlBarPropTypes = {
   className?: string;
   children?: React.ReactNode;
 };
 
-type ControlBarButtonTypes = {
-  component?: any;
-  isDisabled?: boolean;
-  onClick: MouseEventHandler;
-}[];
-
 const ControlBar = ({ className }: ControlBarPropTypes) => {
   const { selectedObject } = useContext(ObjectContext);
-  const { deleteSelectedObjectFromCanvas } = useFabric();
+  const { deleteSelectedObjectFromCanvas, updateObjectColor } = useFabric();
 
-  const buttonIcons: ControlBarButtonTypes = [
-    // TODO: Add undo/redo feature
-    // {
-    //   component: ArrowUturnLeftIcon,
-    //   isDisabled: true,
-    // },
-    // {
-    //   component: ArrowUturnRightIcon,
-    //   isDisabled: true,
-    // },
-    {
-      component: TrashIcon,
-      isDisabled: !selectedObject,
-      onClick: deleteSelectedObjectFromCanvas,
-    },
-  ];
+  const isButtonDisabled = !selectedObject;
+
+  // TODO: Still can't be disabled for image
+  const isColorPickerDisabled =
+    isButtonDisabled && selectedObject?.type === FABRIC_TYPE_IMAGE;
+
+  const [pickedColor, setPickedColor] = useState(DEFAULT_OBJECT_COLOR);
+
+  function onColorPickerChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { value } = e.target;
+
+    setPickedColor(value);
+
+    updateObjectColor(selectedObject, value);
+  }
 
   return (
-    <Card className={clsx("flex justify-end gap-2", className)}>
-      {buttonIcons.map((buttonIcon, index) => (
-        <Button
-          key={`button-icon-${index}`}
-          variant="naked"
-          size="sm"
-          disabled={buttonIcon.isDisabled}
-          onClick={buttonIcon.onClick}
-        >
-          <buttonIcon.component className="h-6 w-6" />
-        </Button>
-      ))}
+    <Card className={clsx("flex items-center justify-end gap-2", className)}>
+      <input
+        type="color"
+        value={pickedColor}
+        disabled={isColorPickerDisabled}
+        className={clsx("h-8 w-8", isColorPickerDisabled ? "opacity-40" : "")}
+        onChange={onColorPickerChange}
+        title="Change Color"
+      />
+
+      <Button
+        variant="naked"
+        size="sm"
+        disabled={isButtonDisabled}
+        onClick={deleteSelectedObjectFromCanvas}
+      >
+        <TrashIcon className="h-6 w-6" />
+      </Button>
     </Card>
   );
 };
