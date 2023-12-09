@@ -1,6 +1,7 @@
 import { useRef, useEffect, useContext } from "react";
 import * as fabric from "fabric";
 
+import { ObjectDispatchContext } from "@/contexts/ObjectContext";
 import { CanvasDispatchContext } from "@/contexts/CanvasContext";
 
 /**
@@ -20,6 +21,7 @@ const ApparelCanvas = ({
   side = "front",
 }: ApparelOptionTypes) => {
   const dispatchCanvas = useContext(CanvasDispatchContext);
+  const dispatchObject = useContext(ObjectDispatchContext);
   const canvasElement = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -31,10 +33,33 @@ const ApparelCanvas = ({
       payload: fabricCanvas,
     });
 
+    fabricCanvas.on("mouse:down", (options) => {
+      if (options.target) {
+        dispatchObject({
+          type: "object-selected",
+          payload: options.target,
+        });
+      }
+    });
+
+    fabricCanvas.on("selection:updated", (options) => {
+      dispatchObject({
+        type: "object-selected",
+        payload: options.selected?.[0] || null,
+      });
+    });
+
+    fabricCanvas.on("selection:cleared", (options) => {
+      dispatchObject({
+        type: "object-selected",
+        payload: null,
+      });
+    });
+
     return () => {
       fabricCanvas.dispose();
     };
-  }, [dispatchCanvas]);
+  }, [dispatchCanvas, dispatchObject]);
 
   return (
     <div

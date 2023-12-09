@@ -1,1 +1,1 @@
-export const IS_CONTROL_BAR_VISIBLE = false;
+export const IS_CONTROL_BAR_VISIBLE = true;
