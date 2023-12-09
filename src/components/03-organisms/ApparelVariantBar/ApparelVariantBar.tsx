@@ -47,7 +47,8 @@ const ApparelVariantBar = (props: ApparelVariantBarPropTypes) => {
         <Popover className="relative">
           <Popover.Button>
             <Button variant="secondary" as="a">
-              <ColorCircle size="sm" className="mr-2" /> Color
+              <ColorCircle size="sm" className="mr-2" color={apparel.color} />{" "}
+              Apparel Color
             </Button>
           </Popover.Button>
 

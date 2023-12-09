@@ -21,9 +21,8 @@ const ControlBar = ({ className }: ControlBarPropTypes) => {
 
   const isButtonDisabled = !selectedObject;
 
-  // TODO: Still can't be disabled for image
   const isColorPickerDisabled =
-    isButtonDisabled && selectedObject?.type === FABRIC_TYPE_IMAGE;
+    isButtonDisabled || selectedObject?.type === FABRIC_TYPE_IMAGE;
 
   const [pickedColor, setPickedColor] = useState(DEFAULT_OBJECT_COLOR);
 
