@@ -13,7 +13,7 @@ export function useFabric() {
   const dispacthObject = useContext(ObjectDispatchContext);
 
   function addTextToCanvas(text: string) {
-    const textObject = new fabric.FabricText(text, {
+    const textObject = new fabric.IText(text, {
       left: 20,
       top: 20,
     });
