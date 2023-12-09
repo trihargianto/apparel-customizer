@@ -16,6 +16,9 @@ export type ButtonPropTypes = {
   /** Change button tag element */
   as?: ButtonAsTypes;
 
+  /** Set into disable state */
+  disabled?: boolean;
+
   /** If set to `true`, the button will be using rounded style */
   isRounded?: boolean;
 

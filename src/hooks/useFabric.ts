@@ -3,11 +3,14 @@ import type { Canvas } from "fabric";
 import * as fabric from "fabric";
 
 import { CanvasContext } from "@/contexts/CanvasContext";
+import { ObjectContext, ObjectDispatchContext } from "@/contexts/ObjectContext";
 
 type FabricCanvasObjectType = Canvas | null;
 
 export function useFabric() {
   const canvas = useContext(CanvasContext);
+  const { selectedObject } = useContext(ObjectContext);
+  const dispacthObject = useContext(ObjectDispatchContext);
 
   function addTextToCanvas(text: string) {
     const textObject = new fabric.FabricText(text, {
@@ -58,6 +61,10 @@ export function useFabric() {
     _addToCanvas(imageObject);
   }
 
+  function deleteSelectedObjectFromCanvas() {
+    canvas?.remove(selectedObject);
+  }
+
   function _addToCanvas(fabricObject: any) {
     canvas?.add(fabricObject);
     _rerenderCanvas();
@@ -73,5 +80,6 @@ export function useFabric() {
     addCircleToCanvas,
     addTextToCanvas,
     addImageToCanvas,
+    deleteSelectedObjectFromCanvas,
   };
 }

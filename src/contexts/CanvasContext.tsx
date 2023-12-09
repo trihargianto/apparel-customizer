@@ -6,9 +6,9 @@ import type { Canvas } from "fabric";
 /**
  * TYPES
  */
-type CanvasStateType = Canvas | null;
+type CanvasStateType = Canvas | null | undefined;
 
-type CanvasActionType = { type: "canvas-updated"; payload?: any };
+type CanvasActionType = { type: "canvas-updated"; payload?: CanvasStateType };
 
 /**
  * CREATE REACT CONTEXTS
