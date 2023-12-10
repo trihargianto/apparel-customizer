@@ -6,6 +6,7 @@ import { ArrowDownTrayIcon } from "@heroicons/react/24/outline";
 // Hooks, Context, Constants, etc
 import { ApparelContext } from "@/contexts/ApparelContext";
 import { IS_CONTROL_BAR_VISIBLE } from "@/constants/config";
+import { useFabric } from "@/hooks/useFabric";
 
 // Components
 import Button from "@/components/01-atoms/Button";
@@ -17,9 +18,10 @@ import ApparelAssetsBar from "@/components/03-organisms/ApparelAssetBar";
 
 export default function Home() {
   const apparel = useContext(ApparelContext);
+  const { downloadCanvasAsPNG } = useFabric();
 
   function onSaveAsImageClick() {
-    window.alert("Save as image clicked");
+    downloadCanvasAsPNG();
   }
 
   return (
