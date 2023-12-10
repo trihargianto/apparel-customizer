@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 
@@ -32,6 +32,14 @@ const ControlBar = ({ className }: ControlBarPropTypes) => {
     setPickedColor(value);
 
     updateObjectColor(selectedObject, value);
+  }
+
+  useEffect(syncInputColorWithSelectedObjectColor, [selectedObject]);
+
+  function syncInputColorWithSelectedObjectColor() {
+    if (selectedObject?.type !== FABRIC_TYPE_IMAGE) {
+      setPickedColor(selectedObject?.get("fill"));
+    }
   }
 
   return (
