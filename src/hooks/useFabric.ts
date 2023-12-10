@@ -11,6 +11,21 @@ export function useFabric() {
   const canvas = useContext(CanvasContext);
   const { selectedObject } = useContext(ObjectContext);
 
+  function downloadCanvasAsPNG() {
+    const canvasDataURL = canvas?.toDataURL({ multiplier: 2, format: "png" });
+
+    if (canvasDataURL) {
+      const anchorElement = window.document.createElement("a");
+
+      anchorElement.href = canvasDataURL;
+      anchorElement.download = "apparel-design.png";
+
+      anchorElement.click();
+
+      // anchorElement.remove();
+    }
+  }
+
   function addTextToCanvas(text: string) {
     const textObject = new fabric.IText(text, {
       left: 20,
@@ -84,6 +99,7 @@ export function useFabric() {
   }
 
   return {
+    downloadCanvasAsPNG,
     addRectangleToCanvas,
     addLineToCanvas,
     addCircleToCanvas,
