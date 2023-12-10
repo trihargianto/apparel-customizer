@@ -109,7 +109,7 @@ const ApparelVariantBar = (props: ApparelVariantBarPropTypes) => {
                       key={`${item}-${index}`}
                       type="button"
                       className={clsx(
-                        "flex w-full justify-between bg-white px-4 py-2 text-left hover:bg-slate-100",
+                        "flex w-full justify-between bg-white px-4 py-2 text-left text-gray-900 hover:bg-slate-100",
                         isActive ? "bg-slate-100" : "bg-white",
                       )}
                       onClick={() => onApparelClick(item)}

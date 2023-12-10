@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { TrashIcon } from "@heroicons/react/24/outline";
+import { TrashIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 
 import { useFabric } from "@/hooks/useFabric";
@@ -16,6 +16,7 @@ type ControlBarPropTypes = {
 };
 
 const ControlBar = ({ className }: ControlBarPropTypes) => {
+  const [opacity, setOpacity] = useState(100);
   const { selectedObject } = useContext(ObjectContext);
   const { deleteSelectedObjectFromCanvas, updateObjectColor } = useFabric();
 
@@ -35,7 +36,44 @@ const ControlBar = ({ className }: ControlBarPropTypes) => {
   }
 
   return (
-    <Card className={clsx("flex items-center justify-end gap-2", className)}>
+    <Card className={clsx("flex items-center justify-end gap-3", className)}>
+      {/* <div className="flex cursor-pointer items-center gap-1 text-sm">
+        <span>Opacity</span>
+
+        <div>100%</div>
+
+        <ChevronDownIcon className="h-3 w-3" />
+      </div> */}
+
+      <div className="dropdown">
+        <div
+          tabIndex={0}
+          role="button"
+          className="flex cursor-pointer items-center gap-1 px-2 py-3 text-sm"
+        >
+          <span>Opacity</span>
+
+          <div>100%</div>
+
+          <ChevronDownIcon className="h-3 w-3" />
+        </div>
+        <div
+          tabIndex={0}
+          className="dropdown-content card card-compact text-primary-content z-[1] w-64 bg-white p-2 shadow"
+        >
+          <div className="card-body">
+            <input
+              type="range"
+              min={0}
+              max="100"
+              value={opacity}
+              onChange={(e) => setOpacity(e.target.value)}
+              className="range"
+            />
+          </div>
+        </div>
+      </div>
+
       <input
         type="color"
         value={pickedColor}
