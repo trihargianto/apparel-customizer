@@ -26,12 +26,12 @@ export default function Home() {
 
   return (
     <>
-      <div className="container mx-auto px-4 lg:px-40 xl:px-64">
+      <div className="container mx-auto px-4 lg:px-0 xl:px-10 2xl:px-44">
         <div className="py-10">
           {IS_CONTROL_BAR_VISIBLE && <ControlBar className="mb-3 lg:mb-10" />}
 
           <div className="flex flex-wrap">
-            <div className="flex w-full items-start justify-center lg:w-1/2">
+            <div className="flex w-full items-start justify-center lg:w-1/2 lg:pr-10">
               <ApparelCanvas apparel={apparel.type} color={apparel.color} />
             </div>
             <div className="w-full lg:w-1/2">

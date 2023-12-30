@@ -1,4 +1,4 @@
-import { useRef, useEffect, useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import type { FabricImage } from "fabric";
 import * as fabric from "fabric";
 
@@ -27,30 +27,36 @@ const ApparelCanvas = ({
 
   const canvasElement = useRef<HTMLCanvasElement>(null);
 
-  const { isMediumScreen, isLargeScreen, isXLargeScreen } = useScreenDetect();
+  const { is2XLargeScreen, isLargeScreen, isXLargeScreen } = useScreenDetect();
 
-  // Mobile-first!
+  // Mobile-first 3:4 aspect ratio!
   let canvasWidth = 340;
+  let canvasHeight = 453;
 
-  if (isXLargeScreen) {
-    canvasWidth = 550;
+  if (is2XLargeScreen) {
+    canvasWidth = 552;
+    canvasHeight = 736;
+  } else if (isXLargeScreen) {
+    canvasWidth = 472;
+    canvasHeight = 629;
   } else if (isLargeScreen) {
-    canvasWidth = 370;
-  } else if (isMediumScreen) {
-    canvasWidth = 800;
+    canvasWidth = 488;
+    canvasHeight = 651;
   }
 
   useEffect(() => {
     // @ts-ignore-next
     const fabricCanvas = new fabric.Canvas(canvasElement.current, {
       width: canvasWidth,
-      height: canvasWidth,
+      height: canvasHeight,
     });
 
     fabric.FabricImage.fromURL(
       `/apparels/${apparel}/${apparel}-${gender}-${color}-${side}.png`,
     ).then((imageObject: FabricImage) => {
       imageObject.scaleToWidth(canvasWidth);
+      imageObject.scaleToHeight(canvasHeight);
+
       fabricCanvas.set("backgroundImage", imageObject);
       fabricCanvas.renderAll();
     });
@@ -76,7 +82,7 @@ const ApparelCanvas = ({
       });
     });
 
-    fabricCanvas.on("selection:cleared", (options) => {
+    fabricCanvas.on("selection:cleared", () => {
       dispatchObject({
         type: "object-selected",
         payload: null,
@@ -89,35 +95,6 @@ const ApparelCanvas = ({
   }, [apparel, color, dispatchCanvas, dispatchObject, gender, side]);
 
   return <canvas ref={canvasElement} />;
-
-  // return (
-  //   <div
-  //     style={{
-  //       backgroundImage: `url('/apparels/${apparel}/${apparel}-${gender}-${color}-${side}.png')`,
-  //       backgroundSize: "480px 559px",
-  //       backgroundRepeat: "no-repeat",
-  //       width: 530,
-  //       height: 630,
-  //     }}
-  //     className="relative"
-  //   >
-  //     <canvas
-  //       ref={canvasElement}
-  //       style={{
-  //         position: "absolute",
-  //         left: 0,
-  //         right: 0,
-  //         top: 0,
-  //         bottom: 0,
-  //         margin: "auto",
-  //         marginTop: "110px",
-  //         marginLeft: "148px",
-  //       }}
-  //       width={180}
-  //       height={220}
-  //     ></canvas>
-  //   </div>
-  // );
 };
 
 export default ApparelCanvas;

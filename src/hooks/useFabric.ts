@@ -27,18 +27,22 @@ export function useFabric() {
   }
 
   function addTextToCanvas(text: string) {
+    const { x, y } = _getCenterPointTarget();
+
     const textObject = new fabric.IText(text, {
-      left: 20,
-      top: 20,
+      left: x,
+      top: y,
     });
 
     _addToCanvas(textObject);
   }
 
   function addCircleToCanvas() {
+    const { x, y } = _getCenterPointTarget();
+
     const circleObject = new fabric.Circle({
-      left: 20,
-      top: 20,
+      left: x,
+      top: y,
       fill: DEFAULT_OBJECT_COLOR,
       radius: 40,
     });
@@ -47,9 +51,11 @@ export function useFabric() {
   }
 
   function addRectangleToCanvas() {
+    const { x, y } = _getCenterPointTarget();
+
     const rectangleObject = new fabric.Rect({
-      left: 20,
-      top: 20,
+      left: x,
+      top: y,
       fill: DEFAULT_OBJECT_COLOR,
       width: 80,
       height: 80,
@@ -59,9 +65,11 @@ export function useFabric() {
   }
 
   function addLineToCanvas() {
+    const { x, y } = _getCenterPointTarget();
+
     const lineObject = new fabric.Line([50, 100, 200, 200], {
-      left: 20,
-      top: 20,
+      left: x,
+      top: y,
       stroke: DEFAULT_OBJECT_COLOR,
       strokeWidth: 2,
     });
@@ -71,6 +79,11 @@ export function useFabric() {
 
   async function addImageToCanvas(imageUrl: string) {
     const imageObject = await fabric.FabricImage.fromURL(imageUrl);
+
+    const { x, y } = _getCenterPointTarget();
+    
+    imageObject.setX(x);
+    imageObject.setY(y);
 
     _addToCanvas(imageObject);
   }
@@ -96,6 +109,19 @@ export function useFabric() {
 
   function _rerenderCanvas() {
     canvas?.renderAll();
+  }
+
+  function _getCenterPointTarget(): { x: number; y: number } {
+    const canvasWidth = canvas?.getWidth() || 0;
+    const canvasHeight = canvas?.getHeight() || 0;
+
+    const x = (canvasWidth * 35) / 100;
+    const y = (canvasHeight * 25) / 100;
+
+    return {
+      x,
+      y,
+    };
   }
 
   return {
