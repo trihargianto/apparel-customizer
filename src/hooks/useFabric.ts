@@ -81,9 +81,15 @@ export function useFabric() {
     const imageObject = await fabric.FabricImage.fromURL(imageUrl);
 
     const { x, y } = _getCenterPointTarget();
-    
+
     imageObject.setX(x);
     imageObject.setY(y);
+
+    const { canvasWidth } = _getCanvasDimension();
+
+    if (canvasWidth > 0) {
+      imageObject.scaleToWidth(_scaleByPercent(canvasWidth, 30));
+    }
 
     _addToCanvas(imageObject);
   }
@@ -112,16 +118,31 @@ export function useFabric() {
   }
 
   function _getCenterPointTarget(): { x: number; y: number } {
-    const canvasWidth = canvas?.getWidth() || 0;
-    const canvasHeight = canvas?.getHeight() || 0;
+    const { canvasWidth, canvasHeight } = _getCanvasDimension();
 
-    const x = (canvasWidth * 35) / 100;
-    const y = (canvasHeight * 25) / 100;
+    const x = _scaleByPercent(canvasWidth, 35);
+    const y = _scaleByPercent(canvasHeight, 25);
 
     return {
       x,
       y,
     };
+  }
+
+  function _getCanvasDimension() {
+    const canvasWidth = canvas?.getWidth() || 0;
+    const canvasHeight = canvas?.getHeight() || 0;
+
+    return {
+      canvasWidth,
+      canvasHeight,
+    };
+  }
+
+  function _scaleByPercent(value: number, percentage: number) {
+    const result = (value * percentage) / 100;
+
+    return result;
   }
 
   return {
